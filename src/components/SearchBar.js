@@ -1,29 +1,9 @@
 import React from "react";
-import { AutoComplete, Content, InputGroup } from "rsuite";
+import { Col, Content, FlexboxGrid, InputGroup, Row } from "rsuite";
 import SearchIcon from "@rsuite/icons/Search";
+import Multiselect from "multiselect-react-dropdown";
 
 export default function SearchBar() {
-  const data = [
-    "Eugenia",
-    "Bryan",
-    "Linda",
-    "Nancy",
-    "Lloyd",
-    "Alice",
-    "Julia",
-    "Albert",
-    "Louisa",
-    "Lester",
-    "Lola",
-    "Lydia",
-    "Hal",
-    "Hannah",
-    "Harriet",
-    "Hattie",
-    "Hazel",
-    "Hilda",
-  ];
-
   return (
     <>
       <Content
@@ -31,28 +11,69 @@ export default function SearchBar() {
       >
         Country Selection
       </Content>
-      <InputGroup
+      <FlexboxGrid
+        justify="space-between"
+        align="middle"
         style={{
-          marginTop: "0.5em",
-          borderRadius: "5em",
-          overflow: "hidden",
           border: "1px solid #46a7cd",
+          borderRadius: "20px",
+          padding: "0.2em",
         }}
       >
-        <AutoComplete data={data} block placeholder="Type Country Name" />
-
-        <SearchIcon
-          color="#46a7cd"
-          placement="center"
-          style={{
-            fontSize: "1.5em",
-            placeItems: "center",
-            alignItems: "center",
-            margin: "0.20em",
-            marginInlineEnd: "0.5em",
-          }}
-        />
-      </InputGroup>
+        <FlexboxGrid.Item colspan={20}>
+          <Multiselect
+            displayValue="key"
+            onKeyPressFn={function noRefCheck() {}}
+            onRemove={function noRefCheck() {}}
+            onSearch={function noRefCheck() {}}
+            onSelect={function noRefCheck() {}}
+            style={{
+              searchBox: {
+                border: "none",
+              },
+            }}
+            options={[
+              {
+                cat: "Group 1",
+                key: "Option 1",
+              },
+              {
+                cat: "Group 1",
+                key: "Option 2",
+              },
+              {
+                cat: "Group 1",
+                key: "Option 3",
+              },
+              {
+                cat: "Group 2",
+                key: "Option 4",
+              },
+              {
+                cat: "Group 2",
+                key: "Option 5",
+              },
+              {
+                cat: "Group 2",
+                key: "Option 6",
+              },
+              {
+                cat: "Group 2",
+                key: "Option 7",
+              },
+            ]}
+          />
+        </FlexboxGrid.Item>
+        <FlexboxGrid.Item>
+          <SearchIcon
+            color="#46a7cd"
+            placement="center"
+            style={{
+              fontSize: "1.5em",
+            }}
+          />
+        </FlexboxGrid.Item>
+      </FlexboxGrid>
     </>
   );
 }
